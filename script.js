@@ -1,4 +1,3 @@
-
 // Professional Portfolio JavaScript - Neutral Design
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -114,6 +113,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // New: Certification card hover effects
+    const certItems = document.querySelectorAll('.cert-item');
+    certItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)'; // Lift slightly on hover
+            this.style.boxShadow = 'var(--shadow-medium)'; // Enhance shadow (make sure this is defined in your CSS)
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)'; // Return to original position
+            this.style.boxShadow = 'var(--shadow-small)'; // Return to original shadow (make sure this is defined in your CSS)
+        });
+    });
+
     // Navigation highlight on scroll
     const sectionsNav = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('nav a');
@@ -172,12 +185,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Video placeholder interaction
-    const videoPlaceholder = document.querySelector('.video-placeholder');
+    const videoPlaceholder = document.querySelector('.video-container iframe'); // Target the iframe directly or its parent container
     if (videoPlaceholder) {
-        videoPlaceholder.addEventListener('click', function() {
-            console.log('Video placeholder clicked - integrate with actual video player');
-            showNotification('Video integration coming soon!', 'info');
-        });
+        // You might want to replace the iframe src with a real YouTube embed when clicked
+        // For now, let's just log a message or show a notification if it's a placeholder URL
+        if (videoPlaceholder.src.includes("googleusercontent.com/youtube.com/0")) {
+            videoPlaceholder.addEventListener('click', function() {
+                console.log('Video placeholder clicked - integrate with actual video player');
+                showNotification('Video integration coming soon!', 'info');
+            });
+        }
     }
 
     // Button interactions
